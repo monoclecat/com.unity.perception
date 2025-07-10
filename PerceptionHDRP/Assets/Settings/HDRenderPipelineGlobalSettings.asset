@@ -740,7 +740,7 @@ MonoBehaviour:
         asm: Unity.RenderPipelines.HighDefinition.Runtime}
       data:
         m_Version: 0
-        m_VolumeProfile: {fileID: 11400000, guid: edb00d1fa02cd48888651c4df8598dc4,
+        m_VolumeProfile: {fileID: 11400000, guid: 7a348d5f7eb9087c8bc7a09bb69ac838,
           type: 2}
     - rid: 1706634700992807117
       type: {class: WaterSystemRuntimeResources, ns: UnityEngine.Rendering.HighDefinition,
