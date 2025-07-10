@@ -4,6 +4,7 @@ using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Perception.Randomization.Parameters;
 using UnityEngine.Perception.Randomization.Samplers;
 using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.Rendering;
 
 namespace UnityEngine.Perception.Randomization.Randomizers
 {
@@ -60,7 +61,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers
         /// Intensity. The unit for intensity will be the same as the one set under Emission in the Light component.
         /// </summary>
         [Tooltip("A value will be sampled based on the chosen Sampling method under Value. The unit for intensity will be the same as the one set under Emission. ")]
-        public FloatParameter intensity = new FloatParameter()
+        public UnityEngine.Perception.Randomization.Parameters.FloatParameter intensity = new UnityEngine.Perception.Randomization.Parameters.FloatParameter()
         {
             value = new UniformSampler(0.5f, 8000f)
         };
@@ -89,7 +90,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers
         /// Temperature. Only utilized when using the Filter and Temperate mode for Light Appearance (under Emission for HDRP lights only).
         /// </summary>
         [Tooltip("A value will be sampled based on the chosen Sampling method under Value and set as the Light component's Temperature. This is only utilized when using the Filter and Temperate mode for Light Appearance (under Emission for HDRP lights only).")]
-        public FloatParameter temperature = new FloatParameter()
+        public UnityEngine.Perception.Randomization.Parameters.FloatParameter temperature = new UnityEngine.Perception.Randomization.Parameters.FloatParameter()
         {
             value = new UniformSampler(2400f, 7200f)
         };
@@ -157,13 +158,15 @@ namespace UnityEngine.Perception.Randomization.Randomizers
             // Randomize intensity
             if (!specifyIntensityAsList)
             {
-                LightData.SetIntensity(intensity.Sample(), LightData.lightUnit);
+                float sampledIntensity = intensity.Sample();
+                Light.intensity = LightUnitUtils.ConvertIntensity(Light, sampledIntensity, Light.lightUnit, LightUnitUtils.GetNativeLightUnit(Light.type));
             }
             else
             {
                 if (intensityList.Count > 0)
                 {
-                    LightData.SetIntensity(intensityList.Sample(), LightData.lightUnit);
+                    float sampledIntensity = intensityList.Sample();
+                    Light.intensity = LightUnitUtils.ConvertIntensity(Light, sampledIntensity, Light.lightUnit, LightUnitUtils.GetNativeLightUnit(Light.type));
                 }
             }
 #endif
