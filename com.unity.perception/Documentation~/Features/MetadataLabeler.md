@@ -111,10 +111,10 @@ We can then add this component to any GameObject as it is environment-related me
 
 ### Labeling-related Custom Metadata Tag
 
-Labeling-related custom metadata tags should inherit from the `LabelMetadataTag` class - a thin wrapper on top of the `BaseMetadataTag` which automatically associates the reported metadata with the instance id of the `Labeling` component it is attached to. For example, to create a custom metadata tag that records which scene that GameObject is a part of, we can have the following class:
+Labeling-related custom metadata tags should inherit from the `LabeledMetadataTag` class - a thin wrapper on top of the `BaseMetadataTag` which automatically associates the reported metadata with the instance id of the `Labeling` component it is attached to. For example, to create a custom metadata tag that records which scene that GameObject is a part of, we can have the following class:
 
 ```csharp
-public LabelingSceneNameTag: LabelMetadataTag {
+public LabelingSceneNameTag: LabeledMetadataTag {
 
     protected override string key => "in_scene";
  
