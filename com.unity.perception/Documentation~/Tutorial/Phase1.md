@@ -305,7 +305,7 @@ HDRP projects have motion blur and a number of other post processing effects ena
 	<img src="../images/Tutorial/motion_blur.png" width = "400"/>
 </p>
 
-> ℹ️ If at this point you don't see any objects being displayed, make sure the Separation Distance for `BackgroundObjectPlacementRandomizer` is (6,6) and not (0,0).
+> ℹ️ If at this point you don't see any objects being displayed, make sure the Placement Area for `BackgroundObjectPlacementRandomizer` is (6,6) and not (0,0).
 
 > ℹ️ Your _**Game**_ tab may have a different field of view than the one shown here. We are using a **1280 x 960** resolution, which has a 4:3 aspect ratio. You can change the resolution or aspect ratio of your _**Game**_ view from the menu located at the top of the tab:
 
