@@ -16,10 +16,10 @@ namespace UnityEngine.Perception.Randomization.Randomizers
     public class BackgroundObjectPlacementRandomizer : Randomizer
     {
         /// <summary>
-        /// The Z offset component applied to all generated background layers
+        /// The center of generation for the background objects
         /// </summary>
-        [Tooltip("The Z offset applied to positions of all placed objects.")]
-        public float depth;
+        [Tooltip("The center point around which generation will occur")]
+        public Vector3 generationCenter = new Vector3(0f, 0f, 0f);
 
         /// <summary>
         /// The number of background layers to generate
@@ -68,10 +68,11 @@ namespace UnityEngine.Perception.Randomization.Randomizers
                 var placementSamples = PoissonDiskSampling.GenerateSamples(
                     placementArea.x, placementArea.y, separationDistance, seed);
                 var offset = new Vector3(placementArea.x, placementArea.y, 0f) * -0.5f;
+                offset += generationCenter;
                 foreach (var sample in placementSamples)
                 {
                     var instance = m_GameObjectOneWayCache.GetOrInstantiate(prefabs.Sample());
-                    instance.transform.position = new Vector3(sample.x, sample.y, separationDistance * i + depth) + offset;
+                    instance.transform.position = new Vector3(sample.x, sample.y, separationDistance * i) + offset;
                 }
                 placementSamples.Dispose();
             }
