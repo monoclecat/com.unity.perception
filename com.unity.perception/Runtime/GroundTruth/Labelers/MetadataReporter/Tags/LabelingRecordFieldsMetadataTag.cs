@@ -24,8 +24,6 @@ namespace UnityEngine.Perception.GroundTruth.MetadataReporter.Tags
         /// <inheritdoc />
         protected override void GetReportedValues(IMessageBuilder builder)
         {
-            if (recordInstance == null) throw new System.ArgumentNullException(nameof(recordInstance), "Record instance cannot be null");
-
             var properties = RecordType(recordInstance).GetProperties();
             foreach (var field in properties)
             {
