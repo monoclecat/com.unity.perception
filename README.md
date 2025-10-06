@@ -1,27 +1,11 @@
-**IMPORTANT: This project has been discontinued and is no longer supported by Unity. Please use the Github issues page to seek community support.**
-
 <p align="center">
   <img src="com.unity.perception/Documentation~/images/unity-wide-whiteback.png" align="middle" width="600"/>
 </p>
 <div align="center">
   <h1>Perception Package</h1>
-  <span>by </span><a href="https://unity.com/computer-vision" target="_blank">Unity Computer Vision</a>
+  <span>forked from the original package, compatible with Unity 6</span>
 </div>
 <br />
-<p align="center">
-  <img src="https://badge-proxy.cds.internal.unity3d.com/5ab9a162-9dd0-4ba1-ba41-cf25378a927a" alt="Perception production version" />
-  <a href="./LICENSE.md">
-    <img src="https://img.shields.io/badge/license-Apache--2.0-green.svg" alt="License Badge" />
-  </a>
-  <img src="https://img.shields.io/badge/unity-2021.3-green.svg?style=flat-square" alt="unity 2021.3">
-  <img src="https://img.shields.io/badge/unity-2022.1-green.svg?style=flat-square" alt="unity 2022.1">
-</p>
-
-<blockquote>
-  <p align="center">
-    <a href="https://create.unity.com/computer-vision-newsletter-sign-up?_gl=1*m30uzd*_gcl_aw*R0NMLjE2NDE4MzcyMjAuQ2p3S0NBaUF6LS1PQmhCSUVpd0FHMXJJT2tyQnYwaFFpQUtBQ1pwdXlzeklPbkdtRHp4dnVVOXNSem1EY0dwaTdLOFRra3FQc2gwLTFSb0NHQlFRQXZEX0J3RQ..*_gcl_dc*R0NMLjE2NDE4MzcyMjAuQ2p3S0NBaUF6LS1PQmhCSUVpd0FHMXJJT2tyQnYwaFFpQUtBQ1pwdXlzeklPbkdtRHp4dnVVOXNSem1EY0dwaTdLOFRra3FQc2gwLTFSb0NHQlFRQXZEX0J3RQ">Join our Mailing List!</a> Sign up to stay up-to-date on our latest feature release, community events, blog posts, and more!
-  </p>
-</blockquote>
 
 <p align="center">
   <img src="com.unity.perception/Documentation~/images/labeler-showcase.jpg" align="center" />
@@ -104,18 +88,3 @@ The [Synthetic Humans](https://github.com/Unity-Technologies/com.unity.cv.synthe
 </p>
 
 The [**Robotics Object Pose Estimation**](https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation) project demonstrates pick-and-place with a robot arm in Unity. It includes using ROS with Unity, importing URDF models, collecting labeled training data using the Perception package, and training and deploying a deep learning model.
-
-## Community and Support
-
-This project has been discontinued and is no longer supported by Unity. Please use the Github issues page to seek community support.
-
-## License & Citation
-The Perception package is licensed under [Apache License Version 2.0](LICENSE.md).  If you find this package useful, consider citing it using:
-```
-@misc{unity-perception2022,
-    title={Unity {P}erception Package},
-    author={{Unity Technologies}},
-    howpublished={\url{https://github.com/Unity-Technologies/com.unity.perception}},
-    year={2020}
-}
-```
