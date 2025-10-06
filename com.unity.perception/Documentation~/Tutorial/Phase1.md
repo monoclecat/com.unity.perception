@@ -15,7 +15,7 @@ Throughout the tutorial, lines starting with **"🟢 Action:"** denote the actio
 - [Step 7: Inspect Generated Synthetic Data](#step-7)
 - [Step 8: Explore and Visualize Your Dataset](#step-8)
 
-> ℹ️ If you face any issues while following this tutorial, please create a post on the **[Unity Computer Vision Forum](https://forum.unity.com/forums/computer-vision.626/)** or the **[GitHub Issues Page](https://github.com/Unity-Technologies/com.unity.perception/issues)** and include as much detail as possible.
+> ℹ️ If you face any issues while following this tutorial, please create an issue and include as much detail as possible.
 
 ## <a name="step-1">Step 1: Download Unity Editor and Create a New Project</a>
 
@@ -305,7 +305,7 @@ HDRP projects have motion blur and a number of other post processing effects ena
 	<img src="../images/Tutorial/motion_blur.png" width = "400"/>
 </p>
 
-> ℹ️ If at this point you don't see any objects being displayed, make sure the Separation Distance for `BackgroundObjectPlacementRandomizer` is (6,6) and not (0,0).
+> ℹ️ If at this point you don't see any objects being displayed, make sure the Placement Area for `BackgroundObjectPlacementRandomizer` is (6,6) and not (0,0).
 
 > ℹ️ Your _**Game**_ tab may have a different field of view than the one shown here. We are using a **1280 x 960** resolution, which has a 4:3 aspect ratio. You can change the resolution or aspect ratio of your _**Game**_ view from the menu located at the top of the tab:
 

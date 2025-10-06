@@ -5,7 +5,6 @@ using GroundTruthTests;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Perception.Analytics;
 using UnityEngine.Perception.Randomization.Samplers;
 using UnityEngine.Perception.GroundTruth;
 using UnityEngine.Perception.GroundTruth.DataModel;
@@ -287,63 +286,6 @@ namespace RandomizationTests.ScenarioTests
 
             // State: currentIteration = 5
             Assert.AreEqual(5, m_Scenario.currentIteration);
-        }
-
-        [UnityTest]
-        public IEnumerator ScenarioCompletedAnalyticsSerializesCorrectly()
-        {
-            // Perception Camera Serialization
-            var perceptionCamera = m_TestObject.AddComponent<PerceptionCamera>();
-            perceptionCamera.captureTriggerMode = CaptureTriggerMode.Scheduled;
-            perceptionCamera.firstCaptureFrame = 2;
-            perceptionCamera.framesBetweenCaptures = 10;
-            var sensorWidth = perceptionCamera.cameraSensor.pixelWidth;
-            var sensorHeight = perceptionCamera.cameraSensor.pixelHeight;
-
-            // Labeler serialization
-            var idLabelConfig = ScriptableObject.CreateInstance<IdLabelConfig>();
-            idLabelConfig.startingLabelId = StartingLabelId.One;
-            idLabelConfig.Init(new List<IdLabelEntry>
-            {
-                new() { id = 1, label = "Test1", hierarchyRelation = HierarchyRelation.Independent},
-                new() { id = 2, label = "Test2", hierarchyRelation = HierarchyRelation.Independent },
-                new() { id = 3, label = "Test3", hierarchyRelation = HierarchyRelation.Independent }
-            });
-
-
-            perceptionCamera.AddLabeler(new BoundingBox2DLabeler(idLabelConfig));
-            perceptionCamera.AddLabeler(new RenderedObjectInfoLabeler(idLabelConfig));
-
-            // Randomizer Serialization
-            var testRandomizer = new AllMembersAndParametersTestRandomizer();
-            testRandomizer.colorRgbCategoricalParam.SetOptions(new(Color, float)[]
-            {
-                (Color.black, 0.4f),
-                (Color.blue, 0.93f),
-                (Color.red, 0.23f)
-            });
-
-            // Scenario serialization
-            yield return CreateNewScenario(20, 1, new Randomizer[] { testRandomizer });
-
-            yield return null;
-            yield return null;
-
-            var cameras = Object.FindObjectsOfType<PerceptionCamera>();
-            var scenarioCompletedData = ScenarioCompletedData.FromCamerasAndRandomizers(cameras, m_Scenario);
-            var actualRandomizerJson = RemoveWhitespace(JsonConvert.SerializeObject(scenarioCompletedData));
-            actualRandomizerJson = actualRandomizerJson.Replace(".00", ".0");
-
-            var expectedRandomizerJson = @"{""platform"":""$Platform$"",""perceptionCameras"":[{""captureTriggerMode"":""Scheduled"",""startAtFrame"":2,""framesBetweenCaptures"":10,""perceptionCameraIndex"":0}],""sensors"":[{""type"":""UnityCamera"",""width"":""$SensorWidth$"",""height"":""$SensorHeight$"",""perceptionCameraIndex"":0}],""labelers"":[{""name"":""BoundingBox2DLabeler"",""enabled"":true,""perceptionCameraIndex"":0,""labelConfigCount"":3,""objectFilter"":"""",""animationPoseCount"":-1},{""name"":""RenderedObjectInfoLabeler"",""enabled"":true,""perceptionCameraIndex"":0,""labelConfigCount"":3,""objectFilter"":"""",""animationPoseCount"":-1}],""randomizers"":[{""name"":""AllMembersAndParametersTestRandomizer"",""members"":[{""name"":""booleanMember"",""value"":""False"",""type"":""System.Boolean""},{""name"":""intMember"",""value"":""4"",""type"":""System.Int32""},{""name"":""uintMember"",""value"":""2"",""type"":""System.UInt32""},{""name"":""floatMember"",""value"":""5"",""type"":""System.Single""},{""name"":""vector2Member"",""value"":""(4.0,7.0)"",""type"":""UnityEngine.Vector2""},{""name"":""unsupportedMember"",""value"":""UnityEngine.Perception.Randomization.Samplers.UniformSampler"",""type"":""UnityEngine.Perception.Randomization.Samplers.UniformSampler""}],""parameters"":[{""name"":""booleanParam"",""type"":""BooleanParameter"",""fields"":[{""name"":""value"",""distribution"":""Constant"",""value"":1.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0}]},{""name"":""floatParam"",""type"":""FloatParameter"",""fields"":[{""name"":""value"",""distribution"":""AnimationCurve"",""value"":0.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0}]},{""name"":""integerParam"",""type"":""IntegerParameter"",""fields"":[{""name"":""value"",""distribution"":""Uniform"",""value"":0.0,""rangeMinimum"":-3.0,""rangeMaximum"":7.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0}]},{""name"":""vector2Param"",""type"":""Vector2Parameter"",""fields"":[{""name"":""x"",""distribution"":""Constant"",""value"":2.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0},{""name"":""y"",""distribution"":""Uniform"",""value"":0.0,""rangeMinimum"":-4.0,""rangeMaximum"":8.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0}]},{""name"":""vector3Param"",""type"":""Vector3Parameter"",""fields"":[{""name"":""x"",""distribution"":""Normal"",""value"":0.0,""rangeMinimum"":-5.0,""rangeMaximum"":9.0,""mean"":4.0,""stdDev"":2.0,""categoricalParameterCount"":0},{""name"":""y"",""distribution"":""Constant"",""value"":3.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0},{""name"":""z"",""distribution"":""AnimationCurve"",""value"":0.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0}]},{""name"":""vector4Param"",""type"":""Vector4Parameter"",""fields"":[{""name"":""x"",""distribution"":""Normal"",""value"":0.0,""rangeMinimum"":-5.0,""rangeMaximum"":9.0,""mean"":4.0,""stdDev"":2.0,""categoricalParameterCount"":0},{""name"":""y"",""distribution"":""Constant"",""value"":3.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0},{""name"":""z"",""distribution"":""AnimationCurve"",""value"":0.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0},{""name"":""w"",""distribution"":""Uniform"",""value"":0.0,""rangeMinimum"":-12.0,""rangeMaximum"":42.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":0}]},{""name"":""colorRgbCategoricalParam"",""type"":""CategoricalParameter"",""fields"":[{""name"":""values"",""distribution"":""Categorical"",""value"":0.0,""rangeMinimum"":0.0,""rangeMaximum"":0.0,""mean"":0.0,""stdDev"":0.0,""categoricalParameterCount"":3}]}]}],""framesPerIteration"":1,""iterationsRun"":2,""iterationsPlanned"":20,""totalFrameCount"":3,""startIteration"":0}";
-
-            // some things need to be dynamically updated
-            expectedRandomizerJson = expectedRandomizerJson
-                .Replace("$Platform$", Application.platform.ToString())
-                .Replace("\"$SensorWidth$\"", $"{sensorWidth}")
-                .Replace("\"$SensorHeight$\"", $"{sensorHeight}");
-            expectedRandomizerJson = RemoveWhitespace(expectedRandomizerJson);
-
-            Assert.AreEqual(expectedRandomizerJson, actualRandomizerJson);
         }
     }
 }

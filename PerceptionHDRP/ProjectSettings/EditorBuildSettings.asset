@@ -15,3 +15,4 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Scenes/Randomizer Tests/SceneTest/Scene 3.unity
     guid: c7ee539a262484291889eb660fcb9df6
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

@@ -295,7 +295,7 @@ At the end of the frame, this labeler gets data from all MetadataTags in the sce
 
 #### How to create custom Labeling-related metadata tag
 
-1. Inherite the *LabelMetadataTag*
+1. Inherite the *LabeledMetadataTag*
 2. Implement required abstract methods
    2.1 key - name of the object in serialized JSON file
    2.2 GetReportedValues(IMessageBuilder builder) - add any information required here to the *builder* by _builder.Add("object_name", data_to_be_added>)_
@@ -423,4 +423,4 @@ When generating ground truth:
 * Unity does not run Vertex and geometry shaders
 * Unity does not run post-processing effects, except built-in lens distortion in HDRP
 
-If you discover more incompatibilities, please open an issue in the [Perception GitHub repository](https://github.com/Unity-Technologies/com.unity.perception/issues). 
+If you discover more incompatibilities, please open an issue in the [Perception GitHub repository](https://github.com/monoclecat/com.unity.perception/issues). 

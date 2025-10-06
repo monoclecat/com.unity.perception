@@ -61,9 +61,7 @@ In-depth documentation on specific components of the package. For the full set o
 
 ## Community and Support
 
-For setup problems or discussions about leveraging the Perception package in your project, please create a new thread on the **[Unity Computer Vision forums](https://forum.unity.com/forums/computer-vision.626/)** with details such as operating system, reproduction steps, etc. If you run into any other problems with the Perception package or have a specific feature request, please open a **[GitHub Issue](https://github.com/Unity-Technologies/com.unity.perception/issues)**.
-
-For any other questions or feedback, connect directly with the Computer Vision team at [computer-vision@unity3d.com](mailto:computer-vision@unity3d.com).
+If you run into any other problems with the Perception package or have a specific feature request, please open a **[GitHub Issue](https://github.com/monoclecat/com.unity.perception/issues)**.
 
 ## Projects using Perception!
 
@@ -84,12 +82,4 @@ The repository includes a test project for local development located at `TestPro
 For closest standards conformity and best experience overall, JetBrains Rider or Visual Studio w/f JetBrains Resharper are suggested. For optimal experience, allow navigating to code in all packages included in your project. In your Unity Editor, navigate to `Preferences` → `External Tools` and check `Generate all .csproj files.` 
 
 ## License & Citation
-The Perception package is licensed under [Apache License Version 2.0](LICENSE.md).  If you find this package useful, consider citing it using:
-```
-@misc{unity-perception2022,
-    title={Unity {P}erception Package},
-    author={{Unity Technologies}},
-    howpublished={\url{https://github.com/Unity-Technologies/com.unity.perception}},
-    year={2020}
-}
-```
+The Perception package is licensed under [Apache License Version 2.0](LICENSE.md). 

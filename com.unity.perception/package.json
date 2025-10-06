@@ -10,12 +10,12 @@
   "name": "com.unity.perception",
   "samples": [
     {
-      "description": "These files accompany the Perception Tutorial, found at https://github.com/Unity-Technologies/com.unity.perception",
+      "description": "These files accompany the Perception Tutorial, found at https://github.com/monoclecat/com.unity.perception",
       "displayName": "Tutorial Files",
       "path": "Samples~/Tutorial Files"
     },
     {
-      "description": "These files accompany the Human Pose Labeling and Randomization Tutorial, found at https://github.com/Unity-Technologies/com.unity.perception",
+      "description": "These files accompany the Human Pose Labeling and Randomization Tutorial, found at https://github.com/monoclecat/com.unity.perception",
       "displayName": "Human Pose Labeling and Randomization",
       "path": "Samples~/Human Pose Labeling and Randomization"
     },
@@ -30,7 +30,7 @@
       "path": "Samples~/ConveyorSample"
     }
   ],
-  "unity": "2021.3",
-  "unityRelease": "7f1",
-  "version": "1.0.0-preview.1"
+  "unity": "6000.0",
+  "unityRelease": "58f2",
+  "version": "0.0.1"
 }

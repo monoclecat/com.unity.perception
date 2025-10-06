@@ -9,7 +9,8 @@ namespace UnityEngine.Perception.UIElements
     /// <summary>
     ///     <para>Makes a text field for entering an unsigned integer.</para>
     /// </summary>
-    public class UIntField : TextValueField<uint>
+    [UxmlElement]
+    public partial class UIntField : TextValueField<uint>
     {
         /// <summary>
         ///     <para>USS class name of elements of this type.</para>
@@ -85,15 +86,7 @@ namespace UnityEngine.Perception.UIElements
             uIntInput.ApplyInputDeviceDelta(delta, speed, startValue);
         }
 
-        /// <summary>
-        ///     <para>Instantiates an UIntField using the data read from a UXML file.</para>
-        /// </summary>
-        public new class UxmlFactory : UxmlFactory<UIntField, UxmlTraits> {}
 
-        /// <summary>
-        ///     <para>Defines UxmlTraits for the UIntField.</para>
-        /// </summary>
-        public new class UxmlTraits : TextValueFieldTraits<uint, UxmlUIntAttributeDescription> {}
 
         public static uint ClampInput(long input)
         {
