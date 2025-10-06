@@ -15,7 +15,7 @@ Throughout the tutorial, lines starting with **"🟢 Action:"** denote the actio
 - [Step 7: Inspect Generated Synthetic Data](#step-7)
 - [Step 8: Explore and Visualize Your Dataset](#step-8)
 
-> ℹ️ If you face any issues while following this tutorial, please create a post on the **[Unity Computer Vision Forum](https://forum.unity.com/forums/computer-vision.626/)** or the **[GitHub Issues Page](https://github.com/Unity-Technologies/com.unity.perception/issues)** and include as much detail as possible.
+> ℹ️ If you face any issues while following this tutorial, please create an issue and include as much detail as possible.
 
 ## <a name="step-1">Step 1: Download Unity Editor and Create a New Project</a>
 
