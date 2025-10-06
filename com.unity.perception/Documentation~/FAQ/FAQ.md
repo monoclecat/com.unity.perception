@@ -462,7 +462,7 @@ This issue is caused by the color format of the texture. In the ***Inspector*** 
   <summary><strong>Q: How do I report additional custom information in my output dataset for each frame or the whole simulation (e.g. 3D position of objects at the start of each Iteration, intensity of lights, etc.)?</strong>
 </summary><br>
 
-This can be done by adding custom annotations to your dataset. Have a look at [this](https://github.com/Unity-Technologies/com.unity.perception/blob/master/com.unity.perception/Documentation%7E/DatasetCapture.md) page for an explanation, as well as an example for how to do this. 
+This can be done by adding custom annotations to your dataset. Have a look at [this](https://github.com/monoclecat/com.unity.perception/blob/main/com.unity.perception/Documentation%7E/DatasetCapture.md) page for an explanation, as well as an example for how to do this. 
 
 ---
 </details>

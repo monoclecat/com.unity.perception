@@ -8,7 +8,7 @@ First, please read through our
 [code of conduct](CODE_OF_CONDUCT.md),
 as we expect all our contributors to follow it.
 
-Second, before starting on a project that you intend to contribute to the Perception package we **strongly** recommend posting on our [Issues page](https://github.com/Unity-Technologies/com.unity.perception/issues) and briefly outlining the changes you plan to make. This will enable us to provide
+Second, before starting on a project that you intend to contribute to the Perception package we **strongly** recommend posting on our [Issues page](https://github.com/monoclecat/com.unity.perception/issues) and briefly outlining the changes you plan to make. This will enable us to provide
 some context that may be helpful for you, including advice on how to optimally perform your changes or even reasons for not doing it.
 
 Lastly, if you're looking for input on what to contribute, feel free to browse the GitHub issues.
@@ -17,7 +17,7 @@ Lastly, if you're looking for input on what to contribute, feel free to browse t
 
 The `main` branch corresponds to the most recent version of the project. Note
 that this may be newer than the
-[latest release](https://github.com/Unity-Technologies/com.unity.perception/releases/tag/latest_release).
+[latest release](https://github.com/monoclecat/com.unity.perception/releases/tag/latest_release).
 
 When contributing to the project, please make sure that your Pull Request (PR)
 contains the following:
