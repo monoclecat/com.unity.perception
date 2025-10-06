@@ -158,14 +158,8 @@ namespace UnityEditor.Perception.Randomization
             var rootList = new List<MenuItem>();
             m_MenuItemsMap.Add(string.Empty, rootList);
 
-            var randomizerTypeSet = new HashSet<Type>();
-            foreach (var randomizer in m_RandomizerList.scenario.randomizers)
-                randomizerTypeSet.Add(randomizer.GetType());
-
             foreach (var randomizerType in StaticData.randomizerTypes)
             {
-                if (randomizerTypeSet.Contains(randomizerType))
-                    continue;
                 var menuAttribute = (AddRandomizerMenuAttribute)Attribute.GetCustomAttribute(
                     randomizerType, typeof(AddRandomizerMenuAttribute));
                 if (menuAttribute != null)
