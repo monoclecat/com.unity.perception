@@ -1,0 +1,11 @@
+# Because Unity's package management system is built upon npm infrastructure, it respects the .npmignore file. 
+#  This allows you to control which files are included in your Unity package when it's packed and distributed, 
+#  which can help in preventing the "no meta file" errors for non-asset files like CODE_OF_CONDUCT.md or LICENSE.md.
+
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE.md
+NOTICE.md
+README.md
+Third Party Notices.md

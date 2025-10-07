@@ -33,7 +33,7 @@ Tests are not run as part of the CI, as this requires a costly Unity license.
 Still, all tests must be passing before the PR is merged. 
 
 To run the tests locally:
-* Open `TestProjects/PerceptionHDRP` in Unity
+* Open `Samples~/PerceptionHDRP` in Unity
 * From the menu bar, open Window -> General -> Test Runner
 * Select 'PlayMode'
 * Click 'Run All'
@@ -43,7 +43,7 @@ To run the tests locally:
 * Check for failed tests
 
 ## Local development
-The repository includes a test project for local development located at `TestProjects/PerceptionHDRP`.
+The repository includes a test project for local development located at `Samples~/PerceptionHDRP`.
 
 ### Suggested IDE Setup
 For closest standards conformity and best experience overall, JetBrains Rider or Visual Studio w/f JetBrains Resharper are suggested. For optimal experience, allow navigating to code in all packages included in your project. To do so, in your Unity Editor, navigate to `Preferences` → `External Tools` and check `Generate all .csproj files.`
