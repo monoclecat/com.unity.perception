@@ -1584,7 +1584,7 @@ namespace GroundTruthTests
         }
 
         [UnityTest]
-        public IEnumerator Keypoint_ForegroundObjectPlacementRandomizer()
+        public IEnumerator Keypoint_ObjectPlacementRandomizer()
         {
             SceneManager.LoadScene("Keypoint_Null_Check_On_Animator_Foreground", LoadSceneMode.Additive);
             AddSceneForCleanup("Keypoint_Null_Check_On_Animator_Foreground");
@@ -1595,7 +1595,7 @@ namespace GroundTruthTests
             AddTestObjectForCleanup(scenarioGO);
 
             var scenario = scenarioGO.AddComponent<FixedLengthScenario>();
-            var randomizer = new ForegroundObjectPlacementRandomizer();
+            var randomizer = new ObjectPlacementRandomizer();
             randomizer.placementArea = new Vector2(1, 10);
             randomizer.depth = 5;
             randomizer.prefabs = new CategoricalParameter<GameObject>();

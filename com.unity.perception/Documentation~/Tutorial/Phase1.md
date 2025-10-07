@@ -353,7 +353,7 @@ If you run the simulation now you will see the generated backgrounds look much m
 
 It is now time to spawn and randomize our foreground objects.
 
-- **🟢 Action**: Add `ForegroundObjectPlacementRandomizer` to your list of Randomizers. Click _**Add Folder**_ and select `Assets/Samples/Perception/<Perception Package Version>/Tutorial Files/Foreground Objects/Phase 1/Prefabs`.
+- **🟢 Action**: Add `ObjectPlacementRandomizer` to your list of Randomizers. Click _**Add Folder**_ and select `Assets/Samples/Perception/<Perception Package Version>/Tutorial Files/Foreground Objects/Phase 1/Prefabs`.
 - **🟢 Action**: Set these values for the above Randomizer: `Depth = -3, Separation Distance = 1.5, Placement Area = (5,5)`.
 
 This Randomizer uses the same algorithm as the one we used for backgrounds; however, it is defined in a separate C# class because you can only have **one of each type of Randomizer added to your Scenario**. Therefore, this is our way of differentiating between how background and foreground objects are treated.
@@ -362,9 +362,9 @@ While the texture and color of the foreground objects will be constant during th
 
 - **🟢 Action**: From the _**Project**_ tab select all the foreground Prefabs located in `Assets/Samples/Perception/<Perception Package Version>/Tutorial Files/Foreground Objects/Phase 1/Prefabs`, and add a `RotationRandomizerTag` component to them.
 
-Randomizers execute according to their order within the list of Randomizers added to your Scenario. If you look at the list now, you will notice that `ForegroundObjectPlacementRandomizer` is coming after `RotationRandomizer`, therefore, foreground objects will NOT be included in the rotation randomizations, even though they are carrying the proper RandomizerTag. To fix that:
+Randomizers execute according to their order within the list of Randomizers added to your Scenario. If you look at the list now, you will notice that `ObjectPlacementRandomizer` is coming after `RotationRandomizer`, therefore, foreground objects will NOT be included in the rotation randomizations, even though they are carrying the proper RandomizerTag. To fix that:
 
-- **🟢 Action**: Drag `ForegroundObjectPlacementRandomizer` using the striped handlebar (on its left side) and drop it above `RotationRandomizer`.
+- **🟢 Action**: Drag `ObjectPlacementRandomizer` using the striped handlebar (on its left side) and drop it above `RotationRandomizer`.
 
 Your full list of Randomizers should now look like the screenshot below:
 
