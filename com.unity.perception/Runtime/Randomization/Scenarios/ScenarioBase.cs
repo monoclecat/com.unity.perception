@@ -621,6 +621,11 @@ namespace UnityEngine.Perception.Randomization.Scenarios
         {
             if (state != State.Initializing)
                 throw new ScenarioException("Randomizers cannot be added to the scenario after it has started");
+            foreach (var randomizer in m_Randomizers)
+                if (randomizer.GetType() == newRandomizer.GetType())
+                    throw new ScenarioException(
+                        $"Cannot add another randomizer of type ${newRandomizer.GetType()} when " +
+                        $"a scenario of this type is already present in the scenario");
             m_Randomizers.Insert(index, newRandomizer);
 #if UNITY_EDITOR
             if (Application.isPlaying)
@@ -656,6 +661,20 @@ namespace UnityEngine.Perception.Randomization.Scenarios
         public Randomizer GetRandomizer(int index)
         {
             return m_Randomizers[index];
+        }
+
+        /// <summary>
+        /// Finds and returns a randomizer attached to this scenario of the specified Randomizer type
+        /// </summary>
+        /// <typeparam name="T">The type of randomizer to find</typeparam>
+        /// <returns>A randomizer of the specified type</returns>
+        /// <exception cref="ScenarioException"></exception>
+        public T GetRandomizer<T>() where T : Randomizer
+        {
+            foreach (var randomizer in m_Randomizers)
+                if (randomizer is T typedRandomizer)
+                    return typedRandomizer;
+            throw new ScenarioException($"A Randomizer of type {typeof(T).Name} was not added to this scenario");
         }
 
         void ValidateParameters()
