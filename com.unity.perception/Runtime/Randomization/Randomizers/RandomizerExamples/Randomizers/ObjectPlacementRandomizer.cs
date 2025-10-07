@@ -53,9 +53,9 @@ namespace UnityEngine.Perception.Randomization.Randomizers
     /// Creates a 2D layer of of evenly spaced GameObjects from a given list of prefabs
     /// </summary>
     [Serializable]
-    [AddRandomizerMenu("Perception/Background Object Placement Randomizer")]
+    [AddRandomizerMenu("Perception/Object Placement Randomizer")]
     [MovedFrom("UnityEngine.Perception.Randomization.Randomizers.SampleRandomizers")]
-    public class BackgroundObjectPlacementRandomizer : Randomizer
+    public class ObjectPlacementRandomizer : Randomizer
     {
         /// <summary>
         /// The list of placement configurations
