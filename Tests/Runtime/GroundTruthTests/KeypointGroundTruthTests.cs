@@ -9,6 +9,7 @@ using UnityEngine.Perception.GroundTruth.Labelers;
 using UnityEngine.Perception.GroundTruth.LabelManagement;
 using UnityEngine.Perception.Randomization.Parameters;
 using UnityEngine.Perception.Randomization.Randomizers;
+using UnityEngine.Perception.Randomization.Randomizers.Tags;
 using UnityEngine.Perception.Randomization.Scenarios;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -1553,11 +1554,15 @@ namespace GroundTruthTests
         [UnityTest]
         public IEnumerator Keypoint_DeleteAndRecreateForegroundRandomizer()
         {
-            SceneManager.LoadScene("Keypoint_Null_Check_On_Animator", LoadSceneMode.Additive);
-            AddSceneForCleanup("Keypoint_Null_Check_On_Animator");
-            yield return null;
+            var prefab = new GameObject("Prefab");
 
-            var prefab = GameObject.Find("LabeledAndRandomized");
+            var labeling = prefab.AddComponent<Labeling>();
+            labeling.labels = new List<string>() { "label" };
+            labeling.RefreshLabeling();
+
+            var animRandTag = prefab.AddComponent<AnimationRandomizerTag>();
+            animRandTag.animationClips = new CategoricalParameter<AnimationClip>();
+            AddTestObjectForCleanup(prefab);
 
             var scenarioGO = new GameObject("scenario");
             AddTestObjectForCleanup(scenarioGO);
