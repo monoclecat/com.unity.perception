@@ -75,9 +75,6 @@ If you run into any other problems with the Perception package or have a specifi
 
 The [**Robotics Object Pose Estimation**](https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation) project demonstrates pick-and-place with a robot arm in Unity. It includes using ROS with Unity, importing URDF models, collecting labeled training data using the Perception package, and training and deploying a deep learning model.
 
-## Local development
-The repository includes a test project for local development located at `Samples~/PerceptionHDRP`.
-
 ### Suggested IDE Setup
 For closest standards conformity and best experience overall, JetBrains Rider or Visual Studio w/f JetBrains Resharper are suggested. For optimal experience, allow navigating to code in all packages included in your project. In your Unity Editor, navigate to `Preferences` → `External Tools` and check `Generate all .csproj files.` 
 

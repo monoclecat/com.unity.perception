@@ -35,7 +35,6 @@ The accumulation feature is used for rendering effects that require multiple fra
 ## Project Setup for Path Tracing
 
 * Setup HDRP to support path tracing by following the ***Render Pipeline Wizard Setup*** in this [tutorial](https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@12.1/manual/Ray-Tracing-Getting-Started.html): 
-* For this example we'll use the SampleScene provided in the PerceptionHDRP project but you can follow along using any Scene
 <p align="center">
 <img src="images/sample_scene_accumulation_demo_1.PNG"/>
   <br><i>Sample Scene</i>
