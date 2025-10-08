@@ -15,9 +15,7 @@ Lastly, if you're looking for input on what to contribute, feel free to browse t
 
 ## Git Branches
 
-The `main` branch corresponds to the most recent version of the project. Note
-that this may be newer than the
-[latest release](https://github.com/monoclecat/com.unity.perception/releases/tag/latest_release).
+The `main` branch corresponds to the most recent version of the project. 
 
 When contributing to the project, please make sure that your Pull Request (PR)
 contains the following:
@@ -33,7 +31,20 @@ Tests are not run as part of the CI, as this requires a costly Unity license.
 Still, all tests must be passing before the PR is merged. 
 
 To run the tests locally:
-* Open `Samples~/PerceptionHDRP` in Unity
+* Create a new Unity HDRP project, e.g. called `PerceptionTester`.
+* Install your locally cloned `com.unity.perception` package via disk. 
+* To the project's `Packages/manifest.json` file, add 
+  ```
+  {
+    "dependencies": {
+      ...
+    },
+    "testables": [
+      "com.unity.perception"
+    ]
+  }
+  ```
+  before the closing bracket. Let the project reload. 
 * From the menu bar, open Window -> General -> Test Runner
 * Select 'PlayMode'
 * Click 'Run All'
@@ -41,9 +52,6 @@ To run the tests locally:
 * When finished, select 'EditMode'
 * Click 'Run All'
 * Check for failed tests
-
-## Local development
-The repository includes a test project for local development located at `Samples~/PerceptionHDRP`.
 
 ### Suggested IDE Setup
 For closest standards conformity and best experience overall, JetBrains Rider or Visual Studio w/f JetBrains Resharper are suggested. For optimal experience, allow navigating to code in all packages included in your project. To do so, in your Unity Editor, navigate to `Preferences` → `External Tools` and check `Generate all .csproj files.`
