@@ -1595,11 +1595,12 @@ namespace GroundTruthTests
             AddTestObjectForCleanup(scenarioGO);
 
             var scenario = scenarioGO.AddComponent<FixedLengthScenario>();
-            var randomizer = new ObjectPlacementRandomizer();
-            randomizer.placementArea = new Vector2(1, 10);
-            randomizer.depth = 5;
-            randomizer.prefabs = new CategoricalParameter<GameObject>();
+
+            var randomizer = new ObjectPlacementRandomizer{prefabs = new CategoricalParameter<GameObject>()};
             randomizer.prefabs.SetOptions(new[] { prefab });
+
+            PlacementConfiguration config = new(){placementArea = new Vector2(1, 10)};
+            randomizer.placementConfigurations = new[] { config };
 
             scenario.AddRandomizer(randomizer);
             scenario.AddRandomizer(new AnimationRandomizer());
