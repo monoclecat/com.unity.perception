@@ -244,10 +244,6 @@ namespace GroundTruthTests
         [UnityTest]
         public IEnumerator MetadataReporterTest()
         {
-            SceneManager.LoadScene("Keypoint_Null_Check_On_Animator", LoadSceneMode.Additive);
-            AddSceneForCleanup("Keypoint_Null_Check_On_Animator");
-            yield return null;
-
             var cameraGo = new GameObject("camera");
             AddTestObjectForCleanup(cameraGo);
             var perceptionCamera = cameraGo.AddComponent<PerceptionCamera>();
@@ -256,7 +252,7 @@ namespace GroundTruthTests
 
             const string tagName = "Player";
 
-            var prefab = GameObject.Find("LabeledAndRandomized");
+            var prefab = new GameObject("Prefab");
             prefab.tag = tagName;
 
             var lightGo = new GameObject("light");
@@ -299,7 +295,7 @@ namespace GroundTruthTests
 
 
                 Assert.AreEqual((int)json[$"SceneLight-{lightGo.name}"]["Color"][0], 255);
-                Assert.AreEqual((double)json[$"SceneLight-{lightGo.name}"]["Intensity"], 1.0d, 0.1d);
+                Assert.AreEqual(light.intensity, (double)json[$"SceneLight-{lightGo.name}"]["Intensity"], 0.1d);
             }
 
             //No error logs should be at this point
