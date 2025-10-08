@@ -225,7 +225,7 @@ namespace RandomizationTests.ScenarioTests
 
             // Second frame, first iteration
             yield return null;
-            Assert.AreEqual(DatasetCapture.currentSimulation.SequenceTime, perceptionCamera.simulationDeltaTime);
+            Assert.AreEqual(DatasetCapture.currentSimulation.SequenceTime, perceptionCamera.simulationDeltaTime, 1e-8);
 
             // Third frame, second iteration, SequenceTime has been reset
             yield return null;
