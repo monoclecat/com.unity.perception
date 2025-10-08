@@ -486,16 +486,14 @@ namespace GroundTruthTests
                 {
                     labelId = 1,
                     labelName = "label",
-                    position = new Vector3(0, .98f, 10),
-                    scale = new Vector3(1.69f, 1.87f, .3f),
-                    rotation = Quaternion.Euler(0f, 180f, 0f)
+                    position = new Vector3(0, 1f, 10),
+                    scale = new Vector3(1f, 2f, 1f),  
+                    rotation = Quaternion.Euler(0f, 0f, 0f)
                 }
             };
-            SceneManager.LoadScene("AnimatedSkinnedMeshRenderer", LoadSceneMode.Additive);
-            AddSceneForCleanup("AnimatedSkinnedMeshRenderer");
-            //wait a frame for the scene to load
-            yield return null;
-            var labeling = Object.FindFirstObjectByType<Labeling>();
+            var skinnedMeshObject = TestHelper.CreateSimpleSkinnedMeshRenderer();
+            var labeling = skinnedMeshObject.AddComponent<Labeling>();
+
             labeling.labels = new List<string>() { "label" };
             labeling.RefreshLabeling();
             var cameraPosition = new Vector3(0, 0, -10);
@@ -508,7 +506,7 @@ namespace GroundTruthTests
             public int labelId;
             public string labelName;
             public Vector3 position;
-            public Vector3 scale;
+            public Vector3 scale;  // BBox size
             public Quaternion rotation;
         }
 

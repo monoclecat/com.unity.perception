@@ -45,6 +45,68 @@ namespace GroundTruthTests
             return SetupLabeledObject(cube, scale, label, x, y, z, roll, pitch, yaw);
         }
 
+        public static GameObject CreateSimpleSkinnedMeshRenderer()
+        {
+            var go = new GameObject("SkinnedMeshObject");
+
+            var rootBone = new GameObject("RootBone");
+            rootBone.transform.parent = go.transform;
+            rootBone.transform.localPosition = Vector3.zero;
+
+            var childBone = new GameObject("ChildBone");
+            childBone.transform.parent = rootBone.transform;
+            childBone.transform.localPosition = new Vector3(0, 1, 0);
+
+            var mesh = new Mesh();
+            var vertices = new Vector3[]
+            {
+                new Vector3(-0.5f, 0, -0.5f),
+                new Vector3(0.5f, 0, -0.5f),
+                new Vector3(-0.5f, 2, -0.5f),
+                new Vector3(0.5f, 2, -0.5f),
+                new Vector3(-0.5f, 0, 0.5f),
+                new Vector3(0.5f, 0, 0.5f),
+                new Vector3(-0.5f, 2, 0.5f),
+                new Vector3(0.5f, 2, 0.5f)
+            };
+
+            var triangles = new int[]
+            {
+                0, 2, 1, 1, 2, 3, // Front
+                5, 7, 4, 4, 7, 6, // Back
+                4, 6, 0, 0, 6, 2, // Left
+                1, 3, 5, 5, 3, 7, // Right
+                2, 6, 3, 3, 6, 7, // Top
+                4, 0, 5, 5, 0, 1  // Bottom
+            };
+
+            mesh.vertices = vertices;
+            mesh.triangles = triangles;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+
+            var weights = new BoneWeight[vertices.Length];
+            for (int i = 0; i < vertices.Length; i++)
+            {
+                weights[i].boneIndex0 = vertices[i].y < 1 ? 0 : 1;
+                weights[i].weight0 = 1.0f;
+            }
+            mesh.boneWeights = weights;
+
+            var bindPoses = new Matrix4x4[2];
+            bindPoses[0] = rootBone.transform.worldToLocalMatrix * go.transform.localToWorldMatrix;
+            bindPoses[1] = childBone.transform.worldToLocalMatrix * go.transform.localToWorldMatrix;
+            mesh.bindposes = bindPoses;
+
+            var smr = go.AddComponent<SkinnedMeshRenderer>();
+            smr.sharedMesh = mesh;
+            smr.bones = new Transform[] { rootBone.transform, childBone.transform };
+            smr.rootBone = rootBone.transform;
+
+            return go;
+        }
+
+
         public static GameObject SetupLabeledObject(GameObject cube, float scale = 10, string label = "label", float x = 0, float y = 0, float z = 0, float roll = 0, float pitch = 0, float yaw = 0)
         {
             cube.transform.SetPositionAndRotation(new Vector3(x, y, z), Quaternion.Euler(pitch, yaw, roll));
