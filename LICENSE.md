@@ -1,4 +1,4 @@
-com.unity.perception copyright © 2021 Unity Technologies ApS
+com.unity.perception copyright © 2020 Unity Technologies ApS
 Derivative work copyright © 2025 Andrew DeLay
 
                                  Apache License

@@ -1,11 +1,20 @@
 # Unity generated files
-[Ll]ibrary/
+Samples~/**/[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
+
+# Files ignored by .npmignore that get created when package is installed via disk for a project
+CHANGELOG.md.meta
+CODE_OF_CONDUCT.md.meta
+CONTRIBUTING.md.meta
+LICENSE.md.meta
+NOTICE.md.meta
+README.md.meta
+Third Party Notices.md.meta
 
 # Unity Asset Store Tools
 /Assets/AssetStoreTools*
