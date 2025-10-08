@@ -1591,11 +1591,16 @@ namespace GroundTruthTests
         [UnityTest]
         public IEnumerator Keypoint_ObjectPlacementRandomizer()
         {
-            SceneManager.LoadScene("Keypoint_Null_Check_On_Animator_Foreground", LoadSceneMode.Additive);
-            AddSceneForCleanup("Keypoint_Null_Check_On_Animator_Foreground");
-            yield return null;
+            var prefab = new GameObject("Prefab");
 
-            var prefab = GameObject.Find("LabeledAndRandomized_Foreground");
+            var labeling = prefab.AddComponent<Labeling>();
+            labeling.labels = new List<string>() { "label" };
+            labeling.RefreshLabeling();
+
+            var animRandTag = prefab.AddComponent<AnimationRandomizerTag>();
+            animRandTag.animationClips = new CategoricalParameter<AnimationClip>();
+            AddTestObjectForCleanup(prefab);
+
             var scenarioGO = new GameObject("scenario");
             AddTestObjectForCleanup(scenarioGO);
 
