@@ -21,17 +21,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Known Issues
 
+## [0.0.3]
+
+* Change repository structure to make the package installable via git link. This requires the package.json to be at the repository root level, which in turn requires the main package folders to be at root level too. 
+* Remove `PerceptionHDRP` Unity project and remove dependencies of the tests on scene fixtures from this project. 
+
 ## [0.0.2]
 
 * Rename `BackgroundObjectPlacementRandomizer` to `ObjectPlacementRandomizer`. 
 * `ObjectPlacementRandomizer` now supports specification of the plane of generation (XY, XZ, ZY), where previously it was only XY. `ObjectPlacementRandomizer` now supports multiple generation planes.
 * Remove `ForegroundObjectPlacementRandomizer`
 
+## [0.0.1]
+
+* Remove analytics 
+* Make compatible with Unity 6
+
 # Up until fork
 
 ## [1.0.0-preview.1] - 2022-11-17
-
-*This version corresponds to `0.0.1` after the fork.*
 
 ### Upgrade Notes
 
