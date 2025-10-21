@@ -33,14 +33,26 @@ namespace UnityEngine.Perception.Randomization.Randomizers
             var tags = tagManager.Query<TextureRandomizerTag>();
             foreach (var tag in tags)
             {
-                var renderer = tag.GetComponent<Renderer>();
+                Transform[] objects;
+                if (tag.applySameToChildren)
+                    objects = tag.GetComponentsInChildren<Transform>();
+                else
+                    objects = new[] { tag.GetComponent<Transform>() };
+
+                Texture2D sampledTexture = texture.Sample();
+                foreach (Transform obj in objects)
+                {
+                    if (!obj.TryGetComponent<Renderer>(out var renderer))
+                        continue; 
 #if HDRP_PRESENT
-                // Choose the appropriate shader texture property ID depending on whether the current material is
-                // using the default HDRP/lit shader or the Perception tutorial's HueShiftOpaque shader
-                var material = renderer.material;
-                var propertyId = material.shader.name == k_TutorialHueShaderName ? k_BaseMap : k_BaseColorMap;
-                material.SetTexture(propertyId, texture.Sample());
+                    // Choose the appropriate shader texture property ID depending on whether the current material is
+                    // using the default HDRP/lit shader or the Perception tutorial's HueShiftOpaque shader
+                    var material = renderer.material;
+                    var propertyId = material.shader.name == k_TutorialHueShaderName ? k_BaseMap : k_BaseColorMap;
+                    material.SetTexture(propertyId, sampledTexture);
 #endif
+                }
+
             }
         }
     }

@@ -6,8 +6,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers.Tags
     [AddComponentMenu("Perception/RandomizerTags/Color Randomizer Tag")]
     public class ColorRandomizerTag : RandomizerTag
     {
-
         [Tooltip("Enable to apply the same randomization to this and all child objects")]
-        public bool applyToChildren = false;
+        public bool applySameToChildren = false;
     }
 }

@@ -31,7 +31,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers
             foreach (var tag in tags)
             {
                 Transform[] objects;
-                if (tag.applyToChildren)
+                if (tag.applySameToChildren)
                     objects = tag.GetComponentsInChildren<Transform>();
                 else
                     objects = new[] { tag.GetComponent<Transform>() };
