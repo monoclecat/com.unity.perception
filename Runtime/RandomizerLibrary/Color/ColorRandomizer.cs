@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine.Perception.Randomization.Parameters;
 using UnityEngine.Perception.Randomization.Randomizers.Tags;
 using UnityEngine.Scripting.APIUpdating;
@@ -29,8 +30,20 @@ namespace UnityEngine.Perception.Randomization.Randomizers
             var tags = tagManager.Query<ColorRandomizerTag>();
             foreach (var tag in tags)
             {
-                var renderer = tag.GetComponent<Renderer>();
-                renderer.material.SetColor(k_BaseColor, colorParameter.Sample());
+                Transform[] objects;
+                if (tag.applyToChildren)
+                    objects = tag.GetComponentsInChildren<Transform>();
+                else
+                    objects = new[] { tag.GetComponent<Transform>() };
+
+                Color sampledColor = colorParameter.Sample();
+                foreach (Transform obj in objects)
+                {
+                    if (!obj.TryGetComponent<Renderer>(out var renderer))
+                        continue; 
+                    renderer.material.SetColor(k_BaseColor, sampledColor);
+                }
+
             }
         }
     }
